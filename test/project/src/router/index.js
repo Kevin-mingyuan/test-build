@@ -5,7 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 Vue.use(Router)
 
 const router = new Router({
-  mode:'history',
+  // mode:'history',
   routes: [
     {
       path: '/hello',
@@ -33,7 +33,7 @@ const router = new Router({
       name:"Computed",
       component:()=>import("@/components/api/Computed"),
       meta:{
-        title:"计算属性"
+        title:"计算属性1"
       }
     }
   ]
