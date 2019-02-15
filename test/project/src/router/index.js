@@ -5,7 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 Vue.use(Router)
 
 const router = new Router({
-  mode:'history',
+  mode:'history', //打包记得注销
   routes: [
     {
       path: '/',
