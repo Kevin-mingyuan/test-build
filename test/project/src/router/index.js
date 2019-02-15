@@ -5,10 +5,10 @@ import HelloWorld from '@/components/HelloWorld'
 Vue.use(Router)
 
 const router = new Router({
-  // mode:'history',
+  mode:'history',
   routes: [
     {
-      path: '/hello',
+      path: '/',
       name: 'HelloWorld',
       component: HelloWorld
     },
@@ -34,6 +34,30 @@ const router = new Router({
       component:()=>import("@/components/api/Computed"),
       meta:{
         title:"计算属性1"
+      }
+    },
+    {
+      path:"/myhead",
+      name:"Myhead",
+      component:()=>import("@/components/MyHead"),
+      meta:{
+        title:"Head"
+      }
+    },
+    {
+      path:"/two/:type",
+      name:"Two",
+      component:()=>import("@/components/bk/Two"),
+      meta:{
+        title:"bk"
+      }
+    },
+    {
+      path:"/detailbk/:type/:id",
+      name:"Detailbk",
+      component:()=>import("@/components/bk/Detailbk"),
+      meta:{
+        title:"Detailbk"
       }
     }
   ]

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <MyHead></MyHead>
     <Loading v-if="index == 1"/><el-button type="primary"  @click="close">关闭全局组件</el-button>
     <ul class="app-ul">
         <li>
@@ -8,14 +9,24 @@
         <li>
             <router-link to="/computed">计算属性</router-link>
         </li>
+        <li>
+          <router-link :to='{"path":"/two/dogs"}'>dogs</router-link>
+        </li>
+        <li>
+          <router-link :to='{"path":"/two/users"}'>users</router-link>
+        </li>
     </ul>
     <router-view/>
   </div>
 </template>
 
 <script>
+import MyHead from './components/MyHead';
 export default {
   name: 'App',
+  components:{
+		MyHead:MyHead
+	},
   data(){
       return {
           index:""
