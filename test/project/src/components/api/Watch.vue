@@ -16,6 +16,11 @@ export default {
             ipt2:"",
             b:{
                 ipt2:""
+            },
+            e: {
+                f: {
+                    g: 5
+                }
             }
         }
     },
@@ -44,7 +49,16 @@ export default {
         //     'handler1',
             
         // ]
-        
+        e: [
+        'handle1',
+        function handle2 (val, oldVal) { /* ... */ },
+        {
+            handler: function handle3 (val, oldVal) { /* ... */ },
+            /* ... */
+        }
+        ],
+        // watch vm.e.f's value: {g: 5}
+        'e.f': function (val, oldVal) { console.log(val , oldVal) }
     },
     created(){
         this.$root.bus.$emit("name","监听"); //非父子间传值

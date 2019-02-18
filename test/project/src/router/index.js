@@ -81,7 +81,15 @@ const router = new Router({
 			meta:{
 				title:"登录"
 			}
-		},
+    },
+    {
+      path:"/register",
+      name:"Register",
+      component:()=>import("@/components/bk/Register"),
+      meta:{
+        title:"注册"
+      }
+    },
 		{
 			path:"/userpage",
 			name:"UserPage",
@@ -90,7 +98,47 @@ const router = new Router({
 				title:"用户资料",
 				isLogin:true
 			}
-		},
+    },
+    {
+      path:"/testroute/:id",
+      name:"TestRoute",
+      component:()=>import("@/components/bk/TestRoute"),
+      meta:{
+        title:"route-test"
+      }
+    },
+    {
+      path:"/tablepage",
+      name:"TablePage",
+      component:()=>import("@/components/element/TablePage"),
+      meta:{
+        title:"elementPage"
+      }
+    },
+    {
+      path:"/nexttick",
+      name:"NextTick",
+      component:()=>import("@/components/api/NextTick"),
+      meta:{
+        title:"NextTick"
+      }
+    },
+    {
+      path:"/tags",
+      name:"Tags",
+      component:()=>import("@/components/element/Tags"),
+      meta:{
+        title:"Tags"
+      }
+    },
+    {
+      path:"/layout",
+      name:"Layout",
+      component:()=>import("@/components/element/Layout"),
+      meta:{
+        title:"Layout"
+      }
+    },
 		{
 			path:"**",
 			name:"NotFind",

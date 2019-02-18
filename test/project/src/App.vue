@@ -22,6 +22,15 @@
 				<li>
 					<router-link :to='{"path":"/login"}'>login</router-link>
 				</li>
+        	<li>
+					<router-link :to='{"path":"/nexttick"}'>nexttick</router-link>
+				</li>
+        	<li>
+					<router-link :to='{"path":"/tablepage"}'>tablepage</router-link>
+				</li>
+        	<li>
+					<router-link :to='{"path":"/tags"}'>tags</router-link>
+				</li>
     </ul>
     <router-view @child="receive"/>
   </div>
