@@ -1,0 +1,477 @@
+From 59e080ec6e65a763fed78e1704b2c926babba455 Mon Sep 17 00:00:00 2001
+From: liuming <1401389531@qq.com>
+Date: Mon, 18 Feb 2019 09:20:33 +0800
+Subject: [PATCH] 2-18
+
+---
+ test/project/package-lock.json               | 33 ++++-----
+ test/project/package.json                    |  3 +-
+ test/project/src/App.vue                     | 25 +++++--
+ test/project/src/components/HelloWorld.vue   |  5 +-
+ test/project/src/components/MyHead.vue       | 28 ++++++--
+ test/project/src/components/api/Computed.vue |  7 ++
+ test/project/src/components/shop/Home.vue    |  3 +-
+ test/project/src/main.js                     |  9 +++
+ test/project/src/router/index.js             | 74 ++++++++++++++++++--
+ test/project/static/img/img.txt              |  1 -
+ 10 files changed, 149 insertions(+), 39 deletions(-)
+ delete mode 100644 test/project/static/img/img.txt
+
+diff --git a/test/project/package-lock.json b/test/project/package-lock.json
+index 57b4713..93a7b32 100644
+--- a/test/project/package-lock.json
++++ b/test/project/package-lock.json
+@@ -3564,14 +3564,12 @@
+         "balanced-match": {
+           "version": "1.0.0",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "brace-expansion": {
+           "version": "1.1.11",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "balanced-match": "^1.0.0",
+             "concat-map": "0.0.1"
+@@ -3586,20 +3584,17 @@
+         "code-point-at": {
+           "version": "1.1.0",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "concat-map": {
+           "version": "0.0.1",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "console-control-strings": {
+           "version": "1.1.0",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "core-util-is": {
+           "version": "1.0.2",
+@@ -3716,8 +3711,7 @@
+         "inherits": {
+           "version": "2.0.3",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "ini": {
+           "version": "1.3.5",
+@@ -3729,7 +3723,6 @@
+           "version": "1.0.0",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "number-is-nan": "^1.0.0"
+           }
+@@ -3744,7 +3737,6 @@
+           "version": "3.0.4",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "brace-expansion": "^1.1.7"
+           }
+@@ -3752,14 +3744,12 @@
+         "minimist": {
+           "version": "0.0.8",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "minipass": {
+           "version": "2.3.5",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "safe-buffer": "^5.1.2",
+             "yallist": "^3.0.0"
+@@ -3778,7 +3768,6 @@
+           "version": "0.5.1",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "minimist": "0.0.8"
+           }
+@@ -3859,8 +3848,7 @@
+         "number-is-nan": {
+           "version": "1.0.1",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "object-assign": {
+           "version": "4.1.1",
+@@ -3872,7 +3860,6 @@
+           "version": "1.4.0",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "wrappy": "1"
+           }
+@@ -3994,7 +3981,6 @@
+           "version": "1.0.2",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "code-point-at": "^1.0.0",
+             "is-fullwidth-code-point": "^1.0.0",
+@@ -10231,6 +10217,11 @@
+       "integrity": "sha512-cliV19VHLJqFUYbz/XeWXe5CO6guzwd0yrrqqp0bmjlMP3ZZULY7fu8RTC4+3lmHwo6ESVDHFDsvjB15hcR5IA==",
+       "dev": true
+     },
++    "vuex": {
++      "version": "3.1.0",
++      "resolved": "https://registry.npmjs.org/vuex/-/vuex-3.1.0.tgz",
++      "integrity": "sha512-mdHeHT/7u4BncpUZMlxNaIdcN/HIt1GsGG5LKByArvYG/v6DvHcOxvDCts+7SRdCoIRGllK8IMZvQtQXLppDYg=="
++    },
+     "watchpack": {
+       "version": "1.6.0",
+       "resolved": "https://registry.npmjs.org/watchpack/-/watchpack-1.6.0.tgz",
+diff --git a/test/project/package.json b/test/project/package.json
+index 7f3ef6c..eec71a1 100644
+--- a/test/project/package.json
++++ b/test/project/package.json
+@@ -15,7 +15,8 @@
+     "mint-ui": "^2.2.13",
+     "vant": "^1.6.4",
+     "vue": "^2.5.2",
+-    "vue-router": "^3.0.1"
++    "vue-router": "^3.0.1",
++    "vuex": "^3.1.0"
+   },
+   "devDependencies": {
+     "autoprefixer": "^7.1.2",
+diff --git a/test/project/src/App.vue b/test/project/src/App.vue
+index ab648a3..ecd394f 100644
+--- a/test/project/src/App.vue
++++ b/test/project/src/App.vue
+@@ -1,5 +1,6 @@
+ <template>
+   <div id="app">
++		<p v-if="user">你好 {{user}} <button @click="quit">退出</button></p>
+     <MyHead></MyHead>
+     <Loading v-if="index == 1"/><el-button type="primary"  @click="close">关闭全局组件</el-button>
+     <ul class="app-ul">
+@@ -15,8 +16,14 @@
+         <li>
+           <router-link :to='{"path":"/two/users"}'>users</router-link>
+         </li>
++        <li>
++          <router-link :to='{"path":"/watch"}'>watch</router-link>
++        </li>
++				<li>
++					<router-link :to='{"path":"/login"}'>login</router-link>
++				</li>
+     </ul>
+-    <router-view/>
++    <router-view @child="receive"/>
+   </div>
+ </template>
+ 
+@@ -29,11 +36,12 @@ export default {
+ 	},
+   data(){
+       return {
+-          index:""
++          index:"",
++					user:""
+       }
+   },
+   created(){
+-
++			console.log(this.$root.bus)
+   },
+   mounted(){
+       setTimeout(()=>{
+@@ -43,7 +51,16 @@ export default {
+   methods:{
+     close(){
+       this.index = 2;
+-    }
++    },
++		//接收子组件的传值
++		receive(user){
++			this.user = user;
++		},
++		quit(){
++			sessionStorage.removeItem("user");
++			this.user = "";
++			this.$router.push("/login");
++		}
+   }
+ }
+ </script>
+diff --git a/test/project/src/components/HelloWorld.vue b/test/project/src/components/HelloWorld.vue
+index 9c6ee65..3753c82 100644
+--- a/test/project/src/components/HelloWorld.vue
++++ b/test/project/src/components/HelloWorld.vue
+@@ -11,7 +11,10 @@ export default {
+     return {
+       msg: 'Welcome to Your Vue.js App'
+     }
+-  }
++  },
++	created(){
++		this.$root.bus.$emit("name","非父子间传值")
++	}
+ }
+ </script>
+ 
+diff --git a/test/project/src/components/MyHead.vue b/test/project/src/components/MyHead.vue
+index 3ee44cb..2ec785c 100644
+--- a/test/project/src/components/MyHead.vue
++++ b/test/project/src/components/MyHead.vue
+@@ -1,6 +1,7 @@
+ <template>
+ 	<div>
+ 		{{title}}
++		
+ 	</div>
+ </template>
+ <script>
+@@ -13,15 +14,32 @@
+ 		},
+ 		created(){
+ 			//非父子间传值接收
+-			console.log(this.$root.Bus)
+-			this.$root.Bus.$on("name",(msg)=>{
++			// console.log(this.$root.bus)
++			this.$root.bus.$on("name",(msg)=>{
+ 				console.log(msg);
+ 				this.title = msg;
+ 			});
+-			// 路由守卫
++			// 路由守卫 点进来之后的操作
+ 			this.$router.afterEach((to,from)=>{
+-				// console.log(to.path)
+-			})
++				//可以点击判断来自哪个路由 然后决定做什么
++				console.log(to.path);
++				this.changeTitle(to.path);
++			});
++			console.log(this.$store)
++		},
++		methods:{
++			//改变标题 路由守卫
++			changeTitle(path){
++				switch(path){
++					case '/two/users' : 
++					this.title = "狗的主人的列表";
++					break;
++					case '/two/dogs':
++					this.title = "狗列表";
++					break;
++					default :;
++				}
++			}
+ 		}
+ 	}
+ </script>
+\ No newline at end of file
+diff --git a/test/project/src/components/api/Computed.vue b/test/project/src/components/api/Computed.vue
+index 0dbcdec..9efc0ee 100644
+--- a/test/project/src/components/api/Computed.vue
++++ b/test/project/src/components/api/Computed.vue
+@@ -19,6 +19,8 @@
+ 		<input type="text" v-model="xing" />
+ 		<input type="text" v-model="ming" />
+ 		{{aPlus}}
++		<hr />
++		{{meta}}
+ 	</div>
+ </template>
+ <script>
+@@ -35,8 +37,13 @@
+ 				ipt:"",
+ 				xing:"",
+ 				ming:"",
++				meta:""
+ 			}
+ 		},
++		created(){
++			this.$root.bus.$emit("name","计算属性");//非父子间传值；
++			this.meta = this.$route.meta.title; //自定义meta
++		},
+ 		computed:{
+ 			// 状态不同,显示不同
+ 			filterList(){
+diff --git a/test/project/src/components/shop/Home.vue b/test/project/src/components/shop/Home.vue
+index 8f4c04f..241e567 100644
+--- a/test/project/src/components/shop/Home.vue
++++ b/test/project/src/components/shop/Home.vue
+@@ -37,10 +37,11 @@
+ 		created(){
+ 			// console.log(this.$root)
+ 			//非父子间传值发送
+-			// this.$root.Bus.$emit("name",'Home');
++			this.$root.bus.$emit("name",'Home');
+ 		},
+ 		mounted(){
+ 			this.getData();
++			console.log(this.$store.state.n)
+ 		}
+ 	}
+ </script>
+diff --git a/test/project/src/main.js b/test/project/src/main.js
+index c217785..ec01b1e 100644
+--- a/test/project/src/main.js
++++ b/test/project/src/main.js
+@@ -28,10 +28,19 @@ Vue.use(Vant);
+ import axios from 'axios';
+ Vue.prototype.axios = axios;
+ 
++//非父子间传值
++import bus from "@/module/bus";
++
++import store from "./store";
++
+ /* eslint-disable no-new */
+ new Vue({
+   el: '#app',
+   router,
++	store,
++  data:{
++	  bus:bus
++  },
+   components: { App },
+   template: '<App/>'
+ })
+diff --git a/test/project/src/router/index.js b/test/project/src/router/index.js
+index 562546d..e9e4985 100644
+--- a/test/project/src/router/index.js
++++ b/test/project/src/router/index.js
+@@ -10,15 +10,20 @@ const router = new Router({
+     {
+       path: '/',
+       name: 'HelloWorld',
+-      component: HelloWorld
++      component: HelloWorld,
++			redirect:{"name":"Login"}
+     },
+     {
+-      path:"/home",
++      path:"/home",        
+       name:"Home",
+       component:()=>import("@/components/shop/Home"),
+       meta:{
+         title:"商品列表"
+-      }
++      },
++			beforeEnter:(to,from,next) =>{
++				alert("路由守卫 home");
++				next();	
++			}
+     },
+     {
+       path:"/detail",
+@@ -31,7 +36,7 @@ const router = new Router({
+     {
+       path:"/computed",
+       name:"Computed",
+-      component:()=>import("@/components/api/Computed"),
++      component:()=>import("@/components/api/Computed"),   
+       meta:{
+         title:"计算属性1"
+       }
+@@ -59,7 +64,66 @@ const router = new Router({
+       meta:{
+         title:"Detailbk"
+       }
+-    }
++    },
++    {
++      path:"/watch",
++      name:"Watch",
++      component:()=>import("@/components/api/Watch"),
++      meta:{
++        title:"监听",
++				isLogin:true,
++      }
++    },
++		{
++			path:"/login",
++			name:"Login",
++			component:()=>import("@/components/bk/Login"),
++			meta:{
++				title:"登录"
++			}
++		},
++		{
++			path:"/userpage",
++			name:"UserPage",
++			component:()=>import("@/components/bk/UserPage"),
++			meta:{
++				title:"用户资料",
++				isLogin:true
++			}
++		},
++		{
++			path:"**",
++			name:"NotFind",
++			component:()=>import("@/components/bk/NotFind"),
++			meta:{
++				title:"404"
++			}
++		}
+   ]
+ })
++
++router.beforeEach((to,from,next)=>{
++	var matchedRoute = to.matched[0]; //匹配的路由
++	console.log(to.matched[0]);
++	if(matchedRoute && matchedRoute.meta.isLogin){ //需要登录验证的页面 需要的页面是加了isLogin变量的不需要的不加
++			if(sessionStorage.getItem("user")){
++		// 		//如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
++				next();
++		}else{
++			router.push({"name":"Login"});
++		}
++	}else{
++				next();
++	}
++	
++	
++// 	if(sessionStorage.getItem("user")){
++// 		//如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
++// 		next();
++// 	}else{
++// 		//跳转到登录页面
++// 		this.$router.push("/login")
++// 	}
++})
++
+ export default router;
+\ No newline at end of file
+diff --git a/test/project/static/img/img.txt b/test/project/static/img/img.txt
+deleted file mode 100644
+index 6103009..0000000
+--- a/test/project/static/img/img.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-我是img
+\ No newline at end of file
+-- 
+2.20.0.windows.1
+
