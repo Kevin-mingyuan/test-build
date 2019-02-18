@@ -19,6 +19,8 @@
 		<input type="text" v-model="xing" />
 		<input type="text" v-model="ming" />
 		{{aPlus}}
+		<hr />
+		{{meta}}
 	</div>
 </template>
 <script>
@@ -35,7 +37,12 @@
 				ipt:"",
 				xing:"",
 				ming:"",
+				meta:""
 			}
+		},
+		created(){
+			this.$root.bus.$emit("name","计算属性");//非父子间传值；
+			this.meta = this.$route.meta.title; //自定义meta
 		},
 		computed:{
 			// 状态不同,显示不同

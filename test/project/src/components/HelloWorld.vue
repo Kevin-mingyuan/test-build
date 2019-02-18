@@ -11,7 +11,10 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+	created(){
+		this.$root.bus.$emit("name","非父子间传值")
+	}
 }
 </script>
 

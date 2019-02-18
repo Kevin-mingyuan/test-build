@@ -10,15 +10,20 @@ const router = new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+			redirect:{"name":"Login"}
     },
     {
-      path:"/home",
+      path:"/home",        
       name:"Home",
       component:()=>import("@/components/shop/Home"),
       meta:{
         title:"商品列表"
-      }
+      },
+			beforeEnter:(to,from,next) =>{
+				alert("路由守卫 home");
+				next();	
+			}
     },
     {
       path:"/detail",
@@ -31,7 +36,7 @@ const router = new Router({
     {
       path:"/computed",
       name:"Computed",
-      component:()=>import("@/components/api/Computed"),
+      component:()=>import("@/components/api/Computed"),   
       meta:{
         title:"计算属性1"
       }
@@ -59,7 +64,66 @@ const router = new Router({
       meta:{
         title:"Detailbk"
       }
-    }
+    },
+    {
+      path:"/watch",
+      name:"Watch",
+      component:()=>import("@/components/api/Watch"),
+      meta:{
+        title:"监听",
+				isLogin:true,
+      }
+    },
+		{
+			path:"/login",
+			name:"Login",
+			component:()=>import("@/components/bk/Login"),
+			meta:{
+				title:"登录"
+			}
+		},
+		{
+			path:"/userpage",
+			name:"UserPage",
+			component:()=>import("@/components/bk/UserPage"),
+			meta:{
+				title:"用户资料",
+				isLogin:true
+			}
+		},
+		{
+			path:"**",
+			name:"NotFind",
+			component:()=>import("@/components/bk/NotFind"),
+			meta:{
+				title:"404"
+			}
+		}
   ]
 })
+
+router.beforeEach((to,from,next)=>{
+	var matchedRoute = to.matched[0]; //匹配的路由
+	console.log(to.matched[0]);
+	if(matchedRoute && matchedRoute.meta.isLogin){ //需要登录验证的页面 需要的页面是加了isLogin变量的不需要的不加
+			if(sessionStorage.getItem("user")){
+		// 		//如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
+				next();
+		}else{
+			router.push({"name":"Login"});
+		}
+	}else{
+				next();
+	}
+	
+	
+// 	if(sessionStorage.getItem("user")){
+// 		//如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
+// 		next();
+// 	}else{
+// 		//跳转到登录页面
+// 		this.$router.push("/login")
+// 	}
+})
+
 export default router;

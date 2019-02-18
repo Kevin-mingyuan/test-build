@@ -28,10 +28,19 @@ Vue.use(Vant);
 import axios from 'axios';
 Vue.prototype.axios = axios;
 
+//非父子间传值
+import bus from "@/module/bus";
+
+import store from "./store";
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+	store,
+  data:{
+	  bus:bus
+  },
   components: { App },
   template: '<App/>'
 })

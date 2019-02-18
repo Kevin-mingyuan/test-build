@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+		<p v-if="user">你好 {{user}} <button @click="quit">退出</button></p>
     <MyHead></MyHead>
     <Loading v-if="index == 1"/><el-button type="primary"  @click="close">关闭全局组件</el-button>
     <ul class="app-ul">
@@ -15,8 +16,14 @@
         <li>
           <router-link :to='{"path":"/two/users"}'>users</router-link>
         </li>
+        <li>
+          <router-link :to='{"path":"/watch"}'>watch</router-link>
+        </li>
+				<li>
+					<router-link :to='{"path":"/login"}'>login</router-link>
+				</li>
     </ul>
-    <router-view/>
+    <router-view @child="receive"/>
   </div>
 </template>
 
@@ -29,11 +36,12 @@ export default {
 	},
   data(){
       return {
-          index:""
+          index:"",
+					user:""
       }
   },
   created(){
-
+			console.log(this.$root.bus)
   },
   mounted(){
       setTimeout(()=>{
@@ -43,7 +51,16 @@ export default {
   methods:{
     close(){
       this.index = 2;
-    }
+    },
+		//接收子组件的传值
+		receive(user){
+			this.user = user;
+		},
+		quit(){
+			sessionStorage.removeItem("user");
+			this.user = "";
+			this.$router.push("/login");
+		}
   }
 }
 </script>

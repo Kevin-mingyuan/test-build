@@ -37,10 +37,11 @@
 		created(){
 			// console.log(this.$root)
 			//非父子间传值发送
-			// this.$root.Bus.$emit("name",'Home');
+			this.$root.bus.$emit("name",'Home');
 		},
 		mounted(){
 			this.getData();
+			console.log(this.$store.state.n)
 		}
 	}
 </script>
