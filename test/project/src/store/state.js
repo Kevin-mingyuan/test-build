@@ -1,5 +1,7 @@
 const state = {
-	n:100,
-	isLogin:true
+	n:30,
+	isLogin:true,
+	dogs:[],
+	users:[]
 }
 export default state;

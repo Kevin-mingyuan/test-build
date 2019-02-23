@@ -34,6 +34,12 @@
 					<li>
 					<router-link :to='{"path":"/vuex"}'>vuex</router-link>
 				</li>
+        	<li>
+					<router-link :to='{"path":"/directives"}'>directives</router-link>
+				</li>
+        	<li>
+					<router-link :to='{"path":"/is"}'>is</router-link>
+				</li>
     </ul>
     <router-view @child="receive"/>
   </div>

@@ -1,8 +1,31 @@
 <template>
 	<div>
-		{{$route.meta.title}}
-		{{n}}
-		<button @click="inc">++++++</button>
+		{{$route.meta.title}}<br />
+		state里{{n}} <br /> getters里{{$store.getters.isGood}}<br />
+		<button @click="inc(3)">同步加3 state</button>
+		<button @click="inc(-3)">同步减3 state</button>
+		<button @click="asyncinc(8)">异步加8 actions</button>
+		<hr/>
+		vuex请求数据<br/>
+		<ul>
+			<li>狗的列表</li>
+			<li 
+				v-for="item in dogs"
+				:key="item.id"
+			>
+				{{item.name}}
+			</li>
+		</ul>
+		<hr />
+		<ul>            
+			<li>人的列表</li>
+			<li
+				v-for="item in users"
+				:key="item.id"
+			>	
+				{{item.name}}
+			</li>
+		</ul>
 	</div>
 </template>
 <script>
@@ -16,17 +39,33 @@
 		computed:{
 			n(){
 				return this.$store.state.n;
+			},
+			// 狗list
+			dogs(){
+				return this.$store.state.dogs;
+			},
+			// 人list
+			users(){
+				return this.$store.state.users;
 			}
 		},
 		created(){
-			
+			// 调用方法 在vuex仓库里获取的数据
+			this.$store.dispatch("getList","dogs");
+			this.$store.dispatch("getList","users");
+
 		},
 		mounted(){
-			console.log(this.$store.state)
+			// console.log(this.$store.state)
 		},
 		methods:{
-			inc(){
-				this.$store.commit("changeN","yes")
+			// 同步
+			inc(num){
+				this.$store.commit("changeN",num)
+			},
+			// 异步
+			asyncinc(num){
+				this.$store.dispatch("asyncChangeN",num)
 			}
 		}
 	}

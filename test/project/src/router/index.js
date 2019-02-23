@@ -156,7 +156,15 @@ const router = new Router({
 			meta:{
 				title:"Vuex"
 			}
-		},
+    },
+    {
+      path:"/is",
+      name:"is",
+      component:()=>import("@/components/api/Is"),
+      meta:{
+        title:"api-is"
+      }
+    },
 		{
 			path:"**",
 			name:"NotFind",
@@ -180,15 +188,6 @@ router.beforeEach((to,from,next)=>{
 	}else{
 				next(); //执行下一步
 	}
-	
-	
-// 	if(sessionStorage.getItem("user")){
-// 		//如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
-// 		next();
-// 	}else{
-// 		//跳转到登录页面
-// 		this.$router.push("/login")
-// 	}
 })
 
 export default router;
