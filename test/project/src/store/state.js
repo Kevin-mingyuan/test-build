@@ -1,5 +1,5 @@
 const state = {
 	n:100,
-	isLogin = true
+	isLogin:true
 }
 export default state;

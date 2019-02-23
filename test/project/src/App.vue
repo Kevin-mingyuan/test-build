@@ -31,6 +31,9 @@
         	<li>
 					<router-link :to='{"path":"/tags"}'>tags</router-link>
 				</li>
+					<li>
+					<router-link :to='{"path":"/vuex"}'>vuex</router-link>
+				</li>
     </ul>
     <router-view @child="receive"/>
   </div>

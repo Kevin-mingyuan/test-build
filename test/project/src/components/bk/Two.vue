@@ -28,7 +28,7 @@
 		watch:{
 			//监听路由的变化
 			$route:{
-				handler(n){
+				handler(n){   //n == this.$route
 					this.type = n.params.type;
 					console.log(n.params.type);
 					if(!n.params.type){ //如果没有传参

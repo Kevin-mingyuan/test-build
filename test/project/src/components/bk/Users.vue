@@ -18,7 +18,7 @@
 			}
 		},
 		created(){
-			var type = this.$route.params.type;
+			var type = this.$route.params.type;   //单个router-link ：to='{"name"="Users",params:{"type":"user"}}'
 			console.log(type);
 			if(!type){
 				type = 'users';

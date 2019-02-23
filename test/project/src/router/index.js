@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode:'history', //打包记得注销
@@ -110,7 +110,9 @@ const router = new Router({
     {
       path:"/tablepage",
       name:"TablePage",
-      component:()=>import("@/components/element/TablePage"),
+      component:(reslove)=>{
+        require(['@/components/element/TablePage'],reslove)
+      },
       meta:{
         title:"elementPage"
       }
@@ -139,6 +141,22 @@ const router = new Router({
         title:"Layout"
       }
     },
+    {
+      path:"/directives",
+      name:"Directives",
+      component:()=>import("@/components/api/Directives"),
+      meta:{
+        title:"自定义指令"
+      }
+    },
+		{
+			path:"/vuex",
+			name:"Vuex",
+			component:()=>import("@/components/api/Vuex"),
+			meta:{
+				title:"Vuex"
+			}
+		},
 		{
 			path:"**",
 			name:"NotFind",
@@ -154,14 +172,13 @@ router.beforeEach((to,from,next)=>{
 	var matchedRoute = to.matched[0]; //匹配的路由
 	console.log(to.matched[0]);
 	if(matchedRoute && matchedRoute.meta.isLogin){ //需要登录验证的页面 需要的页面是加了isLogin变量的不需要的不加
-			if(sessionStorage.getItem("user")){
-		// 		//如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
+			if(sessionStorage.getItem("user")){  //如果登陆了; 用sessionStorage 模拟是否登录； 但是else无next执行不了
 				next();
 		}else{
 			router.push({"name":"Login"});
 		}
 	}else{
-				next();
+				next(); //执行下一步
 	}
 	
 	
