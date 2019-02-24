@@ -38,15 +38,15 @@
 		},
 		computed:{
 			n(){
-				return this.$store.state.n;
+				return this.$store.state.num.n;  //加上模块的名字
 			},
 			// 狗list
 			dogs(){
-				return this.$store.state.dogs;
+				return this.$store.state.list.dogs; //加上拆分后模块的名字
 			},
 			// 人list
 			users(){
-				return this.$store.state.users;
+				return this.$store.state.list.users; //加上拆分后模块的名字
 			}
 		},
 		created(){

@@ -2,11 +2,7 @@
 import axios from 'axios';
 
 const actions = {
-    asyncChangeN(context,num){
-        setTimeout(()=>{
-            context.commit("changeN",num); //调用state里面得changeN这个动作
-        },1500)
-    },
+   
     getList(context,type){
         axios.get("http://localhost:3000/"+type).then((res)=>{
             console.log(context);
