@@ -21,7 +21,8 @@ import list from './list';
 import num from './num';
 const store = new Vuex.Store({
 	modules:{
-		list,num
+		list,
+		num
 	}
 })
 export default store;

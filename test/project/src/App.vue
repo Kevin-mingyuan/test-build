@@ -40,6 +40,9 @@
         	<li>
 					<router-link :to='{"path":"/is"}'>is</router-link>
 				</li>
+        <li>
+					<router-link :to='{"path":"/filter"}'>filter</router-link>
+				</li>
     </ul>
     <router-view @child="receive"/>
   </div>

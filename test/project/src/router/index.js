@@ -165,6 +165,14 @@ const router = new Router({
         title:"api-is"
       }
     },
+    {
+      path:"/filter",
+      name:"Filter1",
+      component:resolve => require(["@/components/api/Filter"],resolve),
+      meta:{
+        title:"api-filter"
+      }
+    },
 		{
 			path:"**",
 			name:"NotFind",
