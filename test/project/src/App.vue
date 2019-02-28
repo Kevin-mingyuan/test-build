@@ -45,7 +45,7 @@
 				</li>
     </ul>
     <router-view @child="receive"/>
-  </div>
+  </div>                
 </template>
 
 <script>

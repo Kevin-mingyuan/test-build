@@ -2,8 +2,8 @@
 	<div>
 		{{title}}
 		<input type="text" value="" v-model="username" /> <br />
-		<input type="password" value="" v-model="password" />
-		<button @click="login">登录</button>
+		<input type="password" value="" v-model="password" @keyup.enter="login"/>
+		<button @click="login" >登录</button>
 	</div>
 </template>
 <script>
