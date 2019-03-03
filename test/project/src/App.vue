@@ -43,6 +43,9 @@
         <li>
 					<router-link :to='{"path":"/filter"}'>filter</router-link>
 				</li>
+				<li>
+					<router-link :to='{"path":"/animate"}'>animate</router-link>
+				</li>
     </ul>
     <router-view @child="receive"/>
   </div>                

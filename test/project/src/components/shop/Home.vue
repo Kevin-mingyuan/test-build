@@ -9,8 +9,8 @@
 				<button @click="go(item.pid)">go to detail</button>
 			</li>
 		</ul>
-		
-		
+		<hr />
+		<p>vuex 拆分num的值 {{$store.state.num.n}}</p>
 	</div>
 </template>
 <script>
@@ -41,7 +41,7 @@
 		},
 		mounted(){
 			this.getData();
-			console.log(this.$store.state.n)
+			console.log(this.$store.state.num.n)
 		}
 	}
 </script>

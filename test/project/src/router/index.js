@@ -173,6 +173,14 @@ const router = new Router({
         title:"api-filter"
       }
     },
+    {
+      path:"/animate",
+      name:"Animate",
+      component:resolve => require(["@/components/api/Animate"],resolve),
+      meta:{
+        title:"动画/过渡"
+      }
+    },
 		{
 			path:"**",
 			name:"NotFind",

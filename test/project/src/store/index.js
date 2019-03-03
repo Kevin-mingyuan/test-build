@@ -17,7 +17,7 @@ Vue.use(Vuex);
 // 	actions
 // })
 
-import list from './list';
+import list from './list';  //引入模块 使用方式： this.$store.state.list.name
 import num from './num';
 const store = new Vuex.Store({
 	modules:{
