@@ -74,10 +74,10 @@
 			this.getList("users");
 		},
 		methods:{
-			// new methods  actions 内的方法名字
+			// new methods  actions 内的方法名字  异步在生命周期函数内调用
 			...mapActions(['getList' , 'asyncChangeN']),
-			// mutations内的方法名字
-			...mapMutations(['changeN']),
+			// mutations内的方法名字 同步
+			...mapMutations(['changeN']),  
 
 			// 同步old methods
 			// inc(num){

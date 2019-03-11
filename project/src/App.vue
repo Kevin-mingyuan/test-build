@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+		<HeaderNav></HeaderNav>
+    <router-view class="main"/>
   </div>
 </template>
 
 <script>
+import HeaderNav from "@/components/Page/HeaderNav";
 export default {
-  name: 'App'
+  name: 'App',
+	components:{
+		HeaderNav
+	},
+  data(){
+			return {
+				
+			}
+	}
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+	@import "./assets/css/style.scss";
+	$sc:25;
+	.main{
+		padding-top:50/$sc + rem;
+	}
 </style>
