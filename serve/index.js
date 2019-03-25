@@ -82,7 +82,7 @@ app.get('/', (req, res) => {
 
     res.setHeader('Access-Control-Allow-Origin', "*");
 
-    res.send(data)
+    res.send(data);
 });
 
 app.listen(3000);
