@@ -1,5 +1,6 @@
 const state =  {
     dogs:[],
-	users:[]
+    users:[],
+    count:123
 };
 export default state;

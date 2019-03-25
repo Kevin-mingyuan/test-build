@@ -1,4 +1,5 @@
 <template>
+<!-- 侧边栏 -->
 	<transition 
 		enter-active-class="animated slideInLeft" 
 		leave-active-class="animated slideOutLeft"
@@ -77,10 +78,13 @@
 		bottom: 0;
 		left: 0;
 		transition: all ease 0.4s;
+		z-index:999;
 		ul{
 			padding:0;
+			z-index:999999999;
 			li{
 				line-height: 50/$sc +rem;
+				z-index:999999999;
 			}
 			a{
 				display: block;

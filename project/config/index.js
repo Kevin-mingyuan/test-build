@@ -6,16 +6,17 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths https 默认端口443
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-			"/mz":{
-				"target":"https：//m.maizuo.com",
-				"changeOrigin":true,  
-				"pathRewrite":{
-						"^/mz":"/"
+			'/mz':{
+				// target:"https://m.maizuo.com",
+				// target:"https://azhao.work",
+				target:'https://www.daxunxun.com/',
+				changeOrigin:true,  
+				pathRewrite:{
+						'^/mz':''
 				}
 			}
 		},

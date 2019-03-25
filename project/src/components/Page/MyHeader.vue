@@ -1,4 +1,5 @@
 <template>
+<!-- 头部 -->
 	<div class="wrap">
 		<i class="icon" @click="toggle">==</i><h3 class="icon">卖座电影</h3>
 	</div>

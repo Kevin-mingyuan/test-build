@@ -1,7 +1,7 @@
 <template>
 	<div>
 		{{$route.meta.title}}<br />
-		state里{{num.n}} <br /> getters里{{$store.getters.isGood}}<br />
+		state里{{num.n}} <br />!! {{list.count}} <button @click="tap(1)">++</button><button @click="tapjian(-6)">async--</button> <br /> getters里{{$store.getters.isGood}}<br />
 		<!-- old methods -->
 		<!-- <button @click="inc(3)">同步加3 state</button> -->
 		<!-- <button @click="inc(-3)">同步减3 state</button> -->
@@ -54,7 +54,7 @@
 
 			//  new methods
 			// 简写辅助函数 ...mapState(['模块名','state内名字'])  解析 {{num.n}} == {{模块名.state名字}}
-			...mapState(['num','n']),
+			...mapState(['num','n',"list","count"]),
 			// 狗list
 			dogs(){
 				return this.$store.state.list.dogs; //加上拆分后模块的名字
@@ -75,9 +75,9 @@
 		},
 		methods:{
 			// new methods  actions 内的方法名字  异步在生命周期函数内调用
-			...mapActions(['getList' , 'asyncChangeN']),
-			// mutations内的方法名字 同步
-			...mapMutations(['changeN']),  
+			...mapActions(['getList' , 'asyncChangeN' , "tapjian"]),
+			// mutations内的方法名字 参数向向上写 同步
+			...mapMutations(['changeN' , "tap"]),  
 
 			// 同步old methods
 			// inc(num){

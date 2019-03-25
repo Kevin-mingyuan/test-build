@@ -1,5 +1,6 @@
 <template>
 	<div class="wrap">
+		<!-- 顶部 -->
 		<MyHeader :toggle="toggle"></MyHeader>		<!-- 顶部点击控制状态 -->
 		<MyNav :flag="flag" :toggle="toggle"></MyNav>   <!-- 侧边栏切换的状态 -->
 	</div>

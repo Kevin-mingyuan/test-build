@@ -23,6 +23,9 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'  //引入swiper
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
+import axios from "axios";
+Vue.prototype.$http = axios;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
