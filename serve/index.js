@@ -72,11 +72,11 @@ const list = [
 
 app.get('/', (req, res) => {
 
-    let page = req.query.page;
+    let page = req.query.page; //前端返回的页码
 
-    let begin = (page - 1) * 10;
+    let begin = (page - 1) * 10;  //返回页码 -1 * 10  取十条
 
-    let data = list.slice(begin, 10*page);
+    let data = list.slice(begin, 10*page); //整个数组截取 开始下标 ， 结束下标
 
     console.log(data);
 
