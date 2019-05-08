@@ -181,6 +181,14 @@ const router = new Router({
         title:"动画/过渡"
       }
     },
+    {
+      path:'/vuex2',
+      name:"Vuex2",
+      component:resolve => require(["@/components/api/Vuex2"],resolve),
+      meta:{
+        title:'vue-辅助函数'
+      }
+    },
 		{
 			path:"**",
 			name:"NotFind",

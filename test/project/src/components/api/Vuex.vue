@@ -1,7 +1,13 @@
 <template>
 	<div>
 		{{$route.meta.title}}<br />
-		state里{{num.n}} <br />!! {{list.count}} <button @click="tap(1)">++</button><button @click="tapjian(-6)">async--</button> <br /> getters里{{$store.getters.isGood}}<br />
+		state里{{num.n}} 
+		<br />
+		!! {{list.count}} 
+		<button @click="tap(1)">++</button>
+		<button @click="tapjian(-6)">async--</button> 
+		<br /> getters里{{$store.getters.isGood}}<br />
+		
 		<!-- old methods -->
 		<!-- <button @click="inc(3)">同步加3 state</button> -->
 		<!-- <button @click="inc(-3)">同步减3 state</button> -->

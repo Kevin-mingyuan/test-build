@@ -46,6 +46,9 @@
 				<li>
 					<router-link :to='{"path":"/animate"}'>animate</router-link>
 				</li>
+        <li>
+					<router-link :to='{"name":"Vuex2"}'>vue辅助函数</router-link>
+				</li>
     </ul>
     <router-view @child="receive"/>
   </div>                
